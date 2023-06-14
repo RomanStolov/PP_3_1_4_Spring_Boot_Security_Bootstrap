@@ -1,9 +1,6 @@
 package ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -104,7 +101,7 @@ public class PeopleController {
     }
 
     /**
-     * Метод администратора сохраняющий нового пользователя в БД
+     * Метод администратора сохраняющий нового пользователя в БД.
      * Выполняется предварительная проверка на наличие пользователя в БД с таким же "Username" как и у вновь
      * регистрируемого пользователя (уникальность логина в БД). Если ошибки при вводе имени нового пользователя,
      * то сохранения нового пользователя не происходит!

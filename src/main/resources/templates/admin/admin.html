@@ -171,7 +171,7 @@
                                                                 <div class="form-group col-8 offset-2">
                                                                     <label class="form-label font-weight-bold"
                                                                            for="editRoleEditUser">Role</label>
-                                                                    <select name="roles" class="form-select col-12"
+                                                                    <select multiple name="roles" class="form-select col-12"
                                                                             size="2">
                                                                         <option th:each="role:${listAllRoles}"
                                                                                 th:value="${role.id}"
@@ -280,7 +280,7 @@
                                                                 <div class="form-group col-8 offset-2">
                                                                     <label class="form-label font-weight-bold"
                                                                            for="noEditRoleDeleteUser">Role</label>
-                                                                    <select name="roles" class="form-control col-12"
+                                                                    <select multiple name="roles" class="form-control col-12"
                                                                             size="2">
                                                                         <option th:each="role:${listAllRoles}"
                                                                                 th:value="${role.id}"
@@ -372,7 +372,7 @@
                                     <div class="form-group col-4 offset-4">
                                         <label class="form-label font-weight-bold"
                                                for="newUserRole">Role</label>
-                                        <select name="roles" class="form-select col-12" size="2">
+                                        <select multiple name="roles" class="form-select col-12" size="2">
                                             <option th:each="role:${listAllRoles}" th:value="${role.id}"
                                                     th:text="${role.name}" id="newUserRole"/>
                                         </select>

@@ -12,7 +12,15 @@
     <br/>
     <br/>
     <br/>
-    <br/
+    <br/>
+    <div align="left">
+        <h4>Для проверки работоспособности программы с отображением разных ролей следующие пары логин-пароль:</h4>
+        <h4> - с ролью только админа: admin, admin;</h4>
+        <h4> - с ролью только пользователя: user, user;</h4>
+        <h4> - с ролью админа и пользователя: adminuser, adminuser.</h4>
+    </div>
+    <br/>
+    <br/>
     <br/>
     <br/>
     <br/>
@@ -25,10 +33,9 @@
         <input type="submit" value="     Зарегистрироваться на сайте       "/>
     </form>
     <br/>
-        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
-            <input type="submit" value="               Выйти из сессии                  "/>
-        </form>
+    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
+        <input type="submit" value="               Выйти из сессии                  "/>
+    </form>
 </div>
 </body>
 </html>
-<!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
