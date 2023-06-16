@@ -8,9 +8,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * Роль является неглавной стороной, поэтому коллекция пользователей аннотирована "mappedBy"
- */
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
@@ -34,9 +31,6 @@ public class Role implements GrantedAuthority {
         this.users = users;
     }
 
-    /**
-     * В этом переопределённом методе прописал возврат "name" для нашей роли
-     */
     @Override
     public String getAuthority() {
         return name;
@@ -62,14 +56,6 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    /**
-     * Переопределил метод принимая во внимание, что поле в классе "User" вот такое:
-     * "private Collection<Role> roles = new HashSet<>();".
-     * Для того чтобы имена ролей отображались в форме сделал определение иквэлс в зависимости
-     * только от "name".
-     * И equals() и hashCode() должны быть переопределены, чтобы Spring MVC и Thymeleaf
-     * правильно отображали флажки, когда форма находится в режиме редактирования.
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,25 +64,14 @@ public class Role implements GrantedAuthority {
         return name.equals(role.name);
     }
 
-    /**
-     * Переопределил метод принимая во внимание, что поле в классе "User" вот такое:
-     * "private Collection<Role> roles = new HashSet<>();".
-     * Для того чтобы имена ролей отображались в форме сделал подсчёт хэшкода в зависимости
-     * только от "name".
-     * И equals() и hashCode() должны быть переопределены, чтобы Spring MVC и Thymeleaf
-     * правильно отображали флажки, когда форма находится в режиме редактирования.
-     */
     @Override
     public int hashCode() {
         return Objects.hash(name);
     }
 
-    /**
-     * Переопределил и оставил только само имя
-     */
     @Override
     public String toString() {
-        return name;
+        return name.replace("ROLE_", "");
     }
 
 }

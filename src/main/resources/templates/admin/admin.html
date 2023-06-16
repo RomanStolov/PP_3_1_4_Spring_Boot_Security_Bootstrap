@@ -14,7 +14,7 @@
     <span class="navbar-brand">
         <b> <span th:text="${user.getUsername()}"></span></b>
         <span>with roles:</span>
-        <span th:text="${user.getRole()}"></span>
+        <span th:text="${user.getRolesString()}"></span>
     </span>
     <form th:action="@{/logout}" th:method="POST">
         <button type="submit" class="btn btn-outline-dark" style="color: lightgrey">Logout</button>
@@ -87,7 +87,7 @@
                                         <td th:text="*{user.getSurname()}"/>
                                         <td th:text="*{user.getAge()}"/>
                                         <td th:text="*{user.getEmail()}"/>
-                                        <td th:text="*{user.getRole()}"/>
+                                        <td th:text="*{user.getRolesString()}"/>
                                         <!--********** Кнопка "Edit"-->
                                         <td>
                                             <button type="button" class="btn btn-info" data-toggle="modal"
@@ -161,11 +161,11 @@
 
                                                                 <div class="form-group col-8 offset-2">
                                                                     <label class="form-label font-weight-bold"
-                                                                           for="noEditPasswordEditUser">Password</label>
+                                                                           for="EditPasswordEditUser">Password</label>
                                                                     <input type="password" th:name="password"
                                                                            th:value="${user.password}"
                                                                            class="form-control"
-                                                                           id="noEditPasswordEditUser" readonly/>
+                                                                           id="EditPasswordEditUser"/>
                                                                 </div>
 
                                                                 <div class="form-group col-8 offset-2">
@@ -175,7 +175,7 @@
                                                                             size="2">
                                                                         <option th:each="role:${listAllRoles}"
                                                                                 th:value="${role.id}"
-                                                                                th:text="${role.name}"
+                                                                                th:text="${role.toString()}"
                                                                                 id="editRoleEditUser"/>
                                                                     </select>
                                                                 </div>
@@ -284,7 +284,7 @@
                                                                             size="2">
                                                                         <option th:each="role:${listAllRoles}"
                                                                                 th:value="${role.id}"
-                                                                                th:text="${role.name}"
+                                                                                th:text="${role.toString()}"
                                                                                 id="noEditRoleDeleteUser"/>
                                                                     </select>
                                                                 </div>
@@ -374,7 +374,7 @@
                                                for="newUserRole">Role</label>
                                         <select multiple name="roles" class="form-select col-12" size="2">
                                             <option th:each="role:${listAllRoles}" th:value="${role.id}"
-                                                    th:text="${role.name}" id="newUserRole"/>
+                                                    th:text="${role.toString()}" id="newUserRole"/>
                                         </select>
                                     </div>
                                     <!--********** Кнопка "Save new user"-->
@@ -420,7 +420,7 @@
                                 <td th:text="*{user.getSurname()}"/>
                                 <td th:text="*{user.getAge()}"/>
                                 <td th:text="*{user.getEmail()}"/>
-                                <td th:text="*{user.getRole()}"/>
+                                <td th:text="*{user.getRolesString()}"/>
                             </tr>
                             </tbody>
                         </table>
