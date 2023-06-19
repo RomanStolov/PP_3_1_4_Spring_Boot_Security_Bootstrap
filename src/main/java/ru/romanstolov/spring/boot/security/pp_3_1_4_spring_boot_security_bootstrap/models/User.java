@@ -1,7 +1,5 @@
 package ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.models;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
