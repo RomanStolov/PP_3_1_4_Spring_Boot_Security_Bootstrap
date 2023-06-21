@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.models.Role;
 import ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.models.User;
-import ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.services.UserServiceImpl;
+import ru.romanstolov.spring.boot.security.pp_3_1_4_spring_boot_security_bootstrap.services.UserService;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,12 +23,12 @@ import java.util.HashSet;
  */
 @Component
 public class InitiateUtils implements CommandLineRunner {
-    private final UserServiceImpl userService;
+    private final UserService userService;
     private final Role roleAdmin = new Role("ROLE_ADMIN");
     private final Role roleUser = new Role("ROLE_USER");
 
     @Autowired
-    public InitiateUtils(UserServiceImpl userService) {
+    public InitiateUtils(UserService userService) {
         this.userService = userService;
     }
 

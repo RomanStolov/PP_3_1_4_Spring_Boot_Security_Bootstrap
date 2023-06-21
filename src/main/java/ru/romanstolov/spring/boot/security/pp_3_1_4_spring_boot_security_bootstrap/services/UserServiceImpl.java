@@ -16,33 +16,26 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public User findUserByUsername(String username) {
-        return userRepository.findUserByUsername(username).get();
-    }
-
-    @Override
-    public Collection<Role> getListRole() {
-        return roleRepository.findAll();
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).get();
     }
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return userRepository.findAllWithoutNPlusOneProblem();
     }
 
     @Override
-    public User findUserById(Long id) {
+    public User findById(Long id) {
         return userRepository.findById(id).get();
     }
 
@@ -56,7 +49,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void update(User user) {
-        if (!user.getPassword().equals(findUserById(user.getId()).getPassword())) {
+        if (!user.getPassword().equals(findById(user.getId()).getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         userRepository.save(user);
